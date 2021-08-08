@@ -70,8 +70,6 @@ public class JuliaSet : MonoBehaviour
         texture.enableRandomWrite = true;
         texture.Create();
 
-        AngleToComplex(Mathf.PI);
-
         DrawJulia();
     }
 
