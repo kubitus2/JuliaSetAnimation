@@ -82,9 +82,7 @@ public class JuliaSet : MonoBehaviour
 
         buffer.SetData(data);
         shader.SetBuffer(kernelHandle, "buffer", buffer);
-
         shader.SetTexture(kernelHandle, "Result", texture);
-
         shader.SetInt("maxIterations", maxIterations);
         shader.SetTexture(kernelHandle, "Result", texture);
 
