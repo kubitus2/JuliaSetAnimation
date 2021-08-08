@@ -33,13 +33,16 @@ public class JuliaSet : MonoBehaviour
     }
 
     DataStruct[] data;
+
     void Awake()
     {
+        //Target framerate to ensure smooth operation of the sim.
         Application.targetFrameRate = 25;
     }
 
     void Start()
     {
+        //Initialise values.
         width = 4.5;
         height = width * Screen.height / Screen.width;
         rStart = -2.0;
@@ -72,6 +75,7 @@ public class JuliaSet : MonoBehaviour
         DrawJulia();
     }
 
+    //Draw Julia set.
     void DrawJulia()
     {
         int kernelHandle = shader.FindKernel("CSMain");
@@ -90,23 +94,24 @@ public class JuliaSet : MonoBehaviour
         image.material.mainTexture = texture;
     }
 
+    //Calculate z = a + bi based on phase and magnitude.
     void AngleToComplex(double angle)
     {
+
         data[0].cx = magnitude * (double) Mathf.Cos((float) angle);
         data[0].cy = magnitude * (double) Mathf.Sin((float) angle);
     }
 
+    //Animate Julia set.
     void Update()
     {
         AngleToComplex((Mathf.PI / 30.0f) * Time.time);
         DrawJulia();
     }
 
+    //Dispose of buffer.
     private void OnDestroy()
     {
         buffer.Dispose();
-    }
-
-
-    
+    }  
 }
