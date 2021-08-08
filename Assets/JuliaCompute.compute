@@ -13,7 +13,7 @@ struct data
 StructuredBuffer<data> buffer;
 uint maxIterations;
 
-[numthreads(8,8,1)]
+[numthreads(16,16,1)]
 void CSMain (uint3 id : SV_DispatchThreadID)
 {
     double real, imag;
@@ -31,7 +31,7 @@ void CSMain (uint3 id : SV_DispatchThreadID)
     for(uint i = 0; i < maxIterations; i++)
     {
 
-        if (real * real + imag * imag > 7)
+        if (real * real + imag * imag > 4)
         {
             break;
         }

@@ -14,6 +14,9 @@ public class JuliaSet : MonoBehaviour
     private RenderTexture texture;
 
     [SerializeField]
+    private double magnitude = 0.7885;
+
+    [SerializeField]
     private ComputeShader shader;
 
     [SerializeField]
@@ -30,6 +33,10 @@ public class JuliaSet : MonoBehaviour
     }
 
     DataStruct[] data;
+    void Awake()
+    {
+        Application.targetFrameRate = 25;
+    }
 
     void Start()
     {
@@ -60,6 +67,8 @@ public class JuliaSet : MonoBehaviour
         texture.enableRandomWrite = true;
         texture.Create();
 
+        AngleToComplex(Mathf.PI);
+
         DrawJulia();
     }
 
@@ -75,10 +84,22 @@ public class JuliaSet : MonoBehaviour
         shader.SetInt("maxIterations", maxIterations);
         shader.SetTexture(kernelHandle, "Result", texture);
 
-        shader.Dispatch(kernelHandle, Screen.width / 8, Screen.height / 8, 1);
+        shader.Dispatch(kernelHandle, Screen.width / 16, Screen.height / 16, 1);
 
         RenderTexture.active = texture;
         image.material.mainTexture = texture;
+    }
+
+    void AngleToComplex(double angle)
+    {
+        data[0].cx = magnitude * (double) Mathf.Cos((float) angle);
+        data[0].cy = magnitude * (double) Mathf.Sin((float) angle);
+    }
+
+    void Update()
+    {
+        AngleToComplex((Mathf.PI / 30.0f) * Time.time);
+        DrawJulia();
     }
 
     private void OnDestroy()
