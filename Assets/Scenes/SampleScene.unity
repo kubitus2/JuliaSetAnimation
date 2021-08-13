@@ -390,11 +390,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 435cae5bbf1125b45bf236d715963c34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magnitude: 0.786
+  magnitude: 0.7720000147819519
   shader: {fileID: 7200000, guid: 8a626ec18ab5152439b530047754e1e7, type: 3}
   image: {fileID: 801622547}
-  realC: -0.8
-  imagC: 0.156
 --- !u!114 &1701457467
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class JuliaSet : MonoBehaviour
     private RenderTexture texture;
 
     [SerializeField]
+    [Range (0, 2)]
     private double magnitude = 0.7885;
 
     [SerializeField]
