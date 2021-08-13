@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class JuliaSet : MonoBehaviour
 {
-
+    //test comment
     private double width, height;
     private double rStart, iStart;
     private int maxIterations;
