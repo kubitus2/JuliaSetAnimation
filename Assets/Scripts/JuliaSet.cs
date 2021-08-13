@@ -21,10 +21,7 @@ public class JuliaSet : MonoBehaviour
 
     [SerializeField]
     private RawImage image;
-
-    [SerializeField]
-    private double realC, imagC;
-
+    
     private struct DataStruct
     {
         public double w, h, r, i;
@@ -58,8 +55,8 @@ public class JuliaSet : MonoBehaviour
             r = rStart,
             i = iStart,
 
-            cx = realC,
-            cy = imagC,
+            cx = 0,
+            cy = 0,
 
             screenWidth = Screen.width,
             screenHeight = Screen.height
